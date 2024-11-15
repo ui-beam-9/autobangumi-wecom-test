@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Wecom Notification</title>
+</head>
+<body>
+    <h1>Send Wecom Notification</h1>
+    <form id="notificationForm">
+        <label for="token">Token:</label>
+        <input type="text" id="token" name="token" required><br><br>
+        <label for="chatId">Chat ID (API URL):</label>
+        <input type="text" id="chatId" name="chatId" required><br><br>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title"><br><br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+        <label for="picurl">Picture URL:</label>
+        <input type="text" id="picurl" name="picurl"><br><br>
+        <button type="submit">Send Notification</button>
+    </form>
+
+    <script>
+        document.getElementById('notificationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const token = document.getElementById('token').value;
+            const chatId = document.getElementById('chatId').value;
+            const title = document.getElementById('title').value;
+            const message = document.getElementById('message').value;
+            const picurl = document.getElementById('picurl').value;
+
+            fetch('/proxy_send_notification', { // 使用 Flask 后端的代理路由
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    token: token,
+                    chat_id: chatId,
+                    title: title,
+                    message: message,
+                    picurl: picurl
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while sending the notification.');
+            });
+        });
+    </script>
+</body>
+</html>
