@@ -6,10 +6,10 @@
 
 ## 目录结构
 wecom-notification-service/
-├── app.py               # 主程序入口
-├── requirements.txt     # 项目依赖
-└── templates/           # 模板文件夹
-└── index.html       # 示例主页模板
+app.py               # 主程序入口
+requirements.txt     # 项目依赖
+templates/           # 模板文件夹
+index.html       # 示例主页模板
 
 ## 安装
 
