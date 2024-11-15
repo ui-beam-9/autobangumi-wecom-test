@@ -1,11 +1,11 @@
-# WeCom Notification Service
+# autobangumi wecom test
 
 #### 该代码和文档由阿里云通义千问AI自动生成
 
 这是一个使用 Flask 框架构建的 Web 服务，能够通过 WeCom（企业微信）发送通知消息。本项目还支持通过代理发送包含图片链接的通知消息。
 
 ## 目录结构
-wecom-notification-service/
+autobangumi-wecom-test
 app.py               # 主程序入口
 requirements.txt     # 项目依赖
 templates/           # 模板文件夹
